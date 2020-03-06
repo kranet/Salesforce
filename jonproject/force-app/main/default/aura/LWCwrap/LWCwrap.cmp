@@ -1,0 +1,44 @@
+<aura:component implements="force:LightningQuickAction">
+    <aura:attribute name="accountId" type="Id" />
+    <aura:attribute name="selectedContact" type="Contact" />
+
+    <force:recordData
+        aura:id="service"
+        recordId="{!v.accountId}"
+        fields="['Name', 'Title', 'Phone', 'Email', 'Picture__c']"
+        targetFields="{!v.selectedContact}"
+    />
+
+    <lightning:card title="Aura embedded LWC" iconName="custom:custom30">
+        <aura:set attribute="actions">
+            <span class="aura">Id of current record: {!v.recordId}</span>
+        </aura:set>
+
+        <div class="slds-m-around_medium">
+            <lightning:layout>
+                <lightning:layoutItem size="6">
+                    <!-- This is an LWC component -->
+                    <c:connectAccount oncontactselect="{!c.handleContactSelect}" />
+                </lightning:layoutItem>
+                <lightning:layoutItem size="6" class="slds-p-left_medium">
+                    <aura:if isTrue="{!v.selectedContact}">
+                        <img
+                            src="{!v.selectedContact.Picture__c}"
+                            alt="Profile photo"
+                        />
+                        <p>{!v.selectedContact.Name}</p>
+                        <p>{!v.selectedContact.Title}</p>
+                        <p
+                            ><lightning:formattedPhone
+                                value="{!v.selectedContact.Phone}"
+                        /></p>
+                        <p
+                            ><lightning:formattedEmail
+                                value="{!v.selectedContact.Email}"
+                        /></p>
+                    </aura:if>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </lightning:card>
+</aura:component>

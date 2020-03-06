@@ -2,7 +2,14 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "baseUrl": ".",
-        "paths": {}
+        "paths": {
+            "c/ConnectAccount": [
+                "ConnectAccount/ConnectAccount.js"
+            ],
+            "c/connectAccount": [
+                "connectAccount/connectAccount.js"
+            ]
+        }
     },
     "include": [
         "**/*",
