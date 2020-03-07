@@ -1,0 +1,40 @@
+ <aura:component description="AttributeInstantiation1" implements="flexipage:availableForRecordHome,force:hasRecordId, force:hasSObjectName ">
+
+    <aura:attribute name="record" type="Object"
+                    description="The record object to be displayed"/>
+    <aura:attribute name="OpptyRecord" type="Object"
+                    description="A simplified view record object to be displayed"/>
+    <aura:attribute name="recordError" type="String"
+                    description="An error message bound to force:recordData"/>
+
+    <force:recordData aura:id="record"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      targetError="{!v.recordError}"
+                      targetRecord="{!v.record}"
+                      targetFields="{!v.OpptyRecord }"
+                      mode="VIEW"/>
+
+    <!-- Display a lightning card with details about the record -->
+    <div class="Oppty Details">
+        <lightning:card iconName="action:approval" title="{!v.OpptyRecord.Name}" >
+            <div class="slds-p-horizontal--small">
+                <p class="slds-text-heading--small">
+                    <lightning:formattedText title="Amount" value="{!v.OpptyRecord.Amount}" /></p>
+// Account opportunity Account ID
+                <p class="slds-text-heading--small">
+                    <lightning:formattedText title="Account Id" value="{!v.OpptyRecord.AccountId }" /></p>
+                <p class="slds-text-heading--small">
+                    <lightning:formattedRichText title="Stage" value="{!v.OpptyRecord.StageName }" /></p>
+            </div>
+        </lightning:card>
+    </div>
+
+    <!-- Display Lightning Data Service errors, if any -->
+    <aura:if isTrue="{!not(empty(v.recordError))}">
+        <div class="recordError">
+                {!v.recordError}</div>
+    </aura:if>
+
+
+</aura:component>
