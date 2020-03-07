@@ -8,6 +8,15 @@
             ],
             "c/connectAccount": [
                 "connectAccount/connectAccount.js"
+            ],
+            "c/errorPanel": [
+                "errorPanel/errorPanel.js"
+            ],
+            "c/ldsUtils": [
+                "ldsUtils/ldsUtils.js"
+            ],
+            "c/viewSource": [
+                "viewSource/viewSource.js"
             ]
         }
     },
