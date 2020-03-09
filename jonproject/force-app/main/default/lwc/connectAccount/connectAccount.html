@@ -11,21 +11,36 @@
                     onclick={handleLoad}
                 ></lightning-button>
             </p>
-            <template if:true={opportunities}>
-                <template for:each={opportunities} for:item="opportunity">
-                    <p key={opportunity.Id}>{opportunity.Name}</p>
+            <template if:true={contacts}>
+                <template for:each={contacts} for:item="contact">
+
+
+                    <lightning-accordion-section name={contact.Name} label={contact.Name} key={contact.Id}>
+                        <lightning-input type="checkbox" variant="label-hidden" 
+                        checked={contact.Phone}
+                        data-key={contact.id} label="dataCheckbox" >
+                        </lightning-input>
+                        {contact.Name}
+                    </lightning-accordion-section>
                 </template>
+
+
+                
             </template>
             <template if:true={error}>
                 <c-error-panel errors={error}></c-error-panel>
             </template>
         </div>
-
-        <c-view-source source="lwc/connectAccount" slot="footer">
-            Retrieve a list of records using an imperative Apex method call.
-        </c-view-source>
+        <div class ="slds-m-around_medium">
+            <p class="slds-m-bottom_small">
+                <lightning-button
+                    label="Save"
+                    onclick={saveFunction}
+                ></lightning-button>
+            </p>
+        </div>
     </lightning-card>
-    <lightning-card title="Opportunity" icon-name="custom:custom63">
+<!--     <lightning-card title="Opportunity" icon-name="custom:custom63">
         <p>{opportunity.Name}</p>
-    </lightning-card>
+    </lightning-card> -->
 </template>

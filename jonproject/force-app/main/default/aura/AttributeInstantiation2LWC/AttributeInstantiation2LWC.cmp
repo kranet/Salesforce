@@ -16,7 +16,7 @@
                       mode="VIEW"/>
 
     <!-- Display a lightning card with details about the record -->
-    <c:connectAccount recordId="{!v.recordId}" onaccountselect="{!c.handleAccountSelect}" />
+    <c:connectAccount recordId="{!v.recordId}"/>
 
 
     <!-- Display Lightning Data Service errors, if any -->

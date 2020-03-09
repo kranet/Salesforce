@@ -3,9 +3,6 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/ConnectAccount": [
-                "ConnectAccount/ConnectAccount.js"
-            ],
             "c/connectAccount": [
                 "connectAccount/connectAccount.js"
             ],
@@ -14,9 +11,6 @@
             ],
             "c/ldsUtils": [
                 "ldsUtils/ldsUtils.js"
-            ],
-            "c/viewSource": [
-                "viewSource/viewSource.js"
             ]
         }
     },

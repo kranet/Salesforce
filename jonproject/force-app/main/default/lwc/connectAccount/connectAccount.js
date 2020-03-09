@@ -2,8 +2,9 @@ import {LightningElement, api, wire} from 'lwc';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import {getRecord} from 'lightning/uiRecordApi';
 import getContactList from '@salesforce/apex/ContactController.getContactList';
+import saveFunction from '@salesforce/apex/OpportunityController.saveFunction';
 
-//const FIELDS = ['Opportunity.Name', 'Opportunity.StageName'];
+const FIELDS = ['Opportunity.Name', 'Opportunity.StageName'];
 
 export default class ConnectAccount extends LightningElement {
     @api recordId;
@@ -11,10 +12,12 @@ export default class ConnectAccount extends LightningElement {
     objectName; 
     contacts;
     opportunity;
+    opportunities;
     
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
+
     wiredRecord({ error, data }) {
-        console.log('hej1');
+        console.log('wiredRecordmetod');
 
         if (error) {
             let message = 'Unknown error';
@@ -31,27 +34,42 @@ export default class ConnectAccount extends LightningElement {
                 }),
             );
         } else if (data) {
-            console.log('hej2');
-            console.log('Datan: '+data);
+            console.log('Found data from wire.');
+            console.log('Data: '+data);
             this.opportunity = data;
             this.name = this.opportunity.fields.Name.value;
             this.StageName = this.opportunity.fields.StageName.value;
         }
     }
+
     handleClick() {
         console.log("Button Clicked!");
         console.log("recordId: "+recordId);
         console.log("jaha");
        }
-       handleLoad() {
+
+    handleLoad() {
         getContactList()
             .then(result => {
-                this.opportunities = result;
+                console.log('Result: '+result);
+                this.contacts = result;
                 this.error = undefined;
             })
             .catch(error => {
                 this.error = error;
-                this.opportunities = undefined;
+                this.contacts = undefined;
             });
+    }
+    headerCheckoxChanged(event) {
+        this.lineItemData.forEach(element =>{
+            element.includedInAutomatedSupplies = event.target.checked;
+        });
+        console.log(JSON.stringify(this.lineItemData));
+    }
+    saveFunction() {
+        saveFunction({opportunityList: this.contacts})
+            .then((result) => {
+                console.log('Saved: '+result);
+            })
     }
 }
