@@ -20,6 +20,7 @@ export default class ConnectAccount extends LightningElement {
         console.log('wiredRecordmetod');
 
         if (error) {
+            console.log('error in wire');
             let message = 'Unknown error';
             if (Array.isArray(error.body)) {
                 message = error.body.map(e => e.message).join(', ');
@@ -67,7 +68,7 @@ export default class ConnectAccount extends LightningElement {
         console.log(JSON.stringify(this.lineItemData));
     }
     saveFunction() {
-        saveFunction({opportunityList: this.contacts})
+        saveFunction({contactList: this.contacts})
             .then((result) => {
                 console.log('Saved: '+result);
             })
