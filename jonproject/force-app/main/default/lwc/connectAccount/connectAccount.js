@@ -2,7 +2,7 @@ import {LightningElement, api, wire} from 'lwc';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import {getRecord} from 'lightning/uiRecordApi';
 import getContactList from '@salesforce/apex/ContactController.getContactList';
-import saveFunction from '@salesforce/apex/OpportunityController.saveFunction';
+import saveFunction from '@salesforce/apex/ContactController.saveFunction';
 
 const FIELDS = ['Opportunity.Name', 'Opportunity.StageName'];
 
