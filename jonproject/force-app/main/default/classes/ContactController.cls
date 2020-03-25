@@ -12,9 +12,7 @@ public with sharing class ContactController {
     }
     @AuraEnabled
     public static String saveFunction(List<Contact> contactList) {
-        for (Contact contact : contactList) {
-            System.debug('Loop: '+contact.getSObjectType());
-        }
+        update contactList;
         String acrv = 'SUCCESS';
         return acrv;
     }

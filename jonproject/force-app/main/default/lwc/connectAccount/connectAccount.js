@@ -8,6 +8,7 @@ const FIELDS = ['Opportunity.Name', 'Opportunity.StageName'];
 
 export default class ConnectAccount extends LightningElement {
     @api recordId;
+    @api record;
 
     objectName; 
     contacts;
@@ -39,6 +40,7 @@ export default class ConnectAccount extends LightningElement {
             console.log('Data: '+data);
             this.opportunity = data;
             this.name = this.opportunity.fields.Name.value;
+            console.log('Name: '+this.name);
             this.StageName = this.opportunity.fields.StageName.value;
         }
     }
@@ -47,6 +49,14 @@ export default class ConnectAccount extends LightningElement {
         console.log("Button Clicked!");
         console.log("recordId: "+recordId);
         console.log("jaha");
+       }
+    handleCheckboxClick(event) {
+        console.log("Clicked");
+        
+        console.log(event.target.dataset.contactid);
+        console.log(event.target.dataset.contactnumber);
+        console.log(event.target.dataset.contactphone);
+        
        }
 
     handleLoad() {

@@ -9,6 +9,7 @@
 
     <force:recordData aura:id="record"
                       layoutType="FULL"
+                      fields="Name,Id,StageName"
                       recordId="{!v.recordId}"
                       targetError="{!v.recordError}"
                       targetRecord="{!v.record}"
@@ -16,7 +17,7 @@
                       mode="VIEW"/>
 
     <!-- Display a lightning card with details about the record -->
-    <c:connectAccount recordId="{!v.recordId}"/>
+    <c:connectAccount recordId="{!v.recordId}" record="{!v.OpptyRecord}"/>
 
 
     <!-- Display Lightning Data Service errors, if any -->

@@ -1,5 +1,6 @@
 <template>
-    <lightning-card title="connectAccount" icon-name="custom:custom63">
+    <template if:true={record}>
+    <lightning-card title={record.Name} icon-name="custom:custom63">
         <div class="slds-m-around_medium">
             <p class="slds-m-bottom_small">
                 <lightning-button
@@ -12,19 +13,16 @@
                 ></lightning-button>
             </p>
             <template if:true={contacts}>
+                <lightning-accordion allow-multiple-sections-open>
                 <template for:each={contacts} for:item="contact">
-
-
                     <lightning-accordion-section name={contact.Name} label={contact.Name} key={contact.Id}>
-                        <lightning-input type="checkbox" variant="label-hidden" 
-                        data-key={contact.id} label="dataCheckbox">
-                        </lightning-input>
-                        {contact.Name}
+                        
+                        
+                        <lightning-input data-contactid={contact.Id} data-contactnumber={contact.Name} data-contactphone={contact.Phone} type="checkbox" checked={contact.Phone} onclick={handleCheckboxClick}> </lightning-input>
+                        <lightning-card title={contact.Name}></lightning-card>
                     </lightning-accordion-section>
                 </template>
-
-
-                
+                </lightning-accordion>
             </template>
             <template if:true={error}>
                 <c-error-panel errors={error}></c-error-panel>
@@ -42,4 +40,5 @@
 <!--     <lightning-card title="Opportunity" icon-name="custom:custom63">
         <p>{opportunity.Name}</p>
     </lightning-card> -->
+</template>
 </template>
