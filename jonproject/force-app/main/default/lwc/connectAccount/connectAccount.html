@@ -18,7 +18,7 @@
                     <lightning-accordion-section name={contact.Name} label={contact.Name} key={contact.Id}>
                         
                         
-                        <lightning-input data-contactid={contact.Id} data-contactnumber={contact.Name} data-contactphone={contact.Phone} type="checkbox" checked={contact.Phone} onclick={handleCheckboxClick}> </lightning-input>
+                        <lightning-input data-contactid={contact.Id} data-contactphone={contact.Phone} type="checkbox" checked={contact.Phone} onclick={handleCheckboxClick}> </lightning-input>
                         <lightning-card title={contact.Name}></lightning-card>
                     </lightning-accordion-section>
                 </template>
@@ -32,7 +32,7 @@
             <p class="slds-m-bottom_small">
                 <lightning-button
                     label="Save"
-                    onclick={saveFunction}
+                    onclick={generalQuery}
                 ></lightning-button>
             </p>
         </div>

@@ -16,4 +16,13 @@ public with sharing class ContactController {
         String acrv = 'SUCCESS';
         return acrv;
     }
+    @AuraEnabled
+    public static String saveFunction(Map<String, String> contactIdToPhoneMap) {
+        Set<Id> contactIdSet = [SELECT ID FROM Account]
+        for (String looper : contactIdToPhoneMap.keySet()){
+            contactIdSet.add((Id) looper);
+        }
+        String acrv = 'SUCCESS';
+        return acrv;
+    }
 }

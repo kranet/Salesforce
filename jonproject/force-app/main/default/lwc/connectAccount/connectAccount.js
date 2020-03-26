@@ -3,6 +3,7 @@ import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import {getRecord} from 'lightning/uiRecordApi';
 import getContactList from '@salesforce/apex/ContactController.getContactList';
 import saveFunction from '@salesforce/apex/ContactController.saveFunction';
+import generalQuery from '@salesforce/apex/Util.generalQuery';
 
 const FIELDS = ['Opportunity.Name', 'Opportunity.StageName'];
 
@@ -14,6 +15,7 @@ export default class ConnectAccount extends LightningElement {
     contacts;
     opportunity;
     opportunities;
+    contactIdToPhoneMap = {};
     
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
 
@@ -51,11 +53,18 @@ export default class ConnectAccount extends LightningElement {
         console.log("jaha");
        }
     handleCheckboxClick(event) {
-        console.log("Clicked");
-        
+        let triggeringContactId = event.target.dataset.contactid;
+        let triggeringContactPhone = event.target.dataset.contactPhone;
+
+        if(contactIdToPhoneMap.has(triggeringContactId)) {
+            this.contactIdToPhoneMap.delete(triggeringContactId);
+        } else {
+            this.contactIdToPhoneMap.set(triggeringContactId, triggeringContactPhone);
+        }
         console.log(event.target.dataset.contactid);
-        console.log(event.target.dataset.contactnumber);
         console.log(event.target.dataset.contactphone);
+        console.log(this.contactIdToPhoneMap(triggeringContactId, triggeringContactPhone));
+        
         
        }
 
