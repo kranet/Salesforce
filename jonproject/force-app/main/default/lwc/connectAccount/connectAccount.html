@@ -16,8 +16,6 @@
                 <lightning-accordion allow-multiple-sections-open>
                 <template for:each={contacts} for:item="contact">
                     <lightning-accordion-section name={contact.Name} label={contact.Name} key={contact.Id}>
-                        
-                        
                         <lightning-input data-contactid={contact.Id} data-contactphone={contact.Phone} type="checkbox" checked={contact.Phone} onclick={handleCheckboxClick}> </lightning-input>
                         <lightning-card title={contact.Name}></lightning-card>
                     </lightning-accordion-section>

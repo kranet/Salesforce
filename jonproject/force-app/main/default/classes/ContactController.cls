@@ -17,8 +17,10 @@ public with sharing class ContactController {
         return acrv;
     }
     @AuraEnabled
-    public static String saveFunction(Map<String, String> contactIdToPhoneMap) {
-        Set<Id> contactIdSet = [SELECT ID FROM Account]
+    public static String saveFunction(Map<String, String> contactIdToPhoneMap) {    
+        Set<Id> contactIdsToUpdateSet = contactIdToPhoneMap.keySet();
+        Util.Parameters('Contact', contactIdsToUpdateSet);
+        Set<Id> contactsToUpdate = new Map<Id,SObject>([SELECT ID FROM Contact]).keySet();
         for (String looper : contactIdToPhoneMap.keySet()){
             contactIdSet.add((Id) looper);
         }
