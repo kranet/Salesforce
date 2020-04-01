@@ -14,7 +14,7 @@ export default class ConnectAccount extends LightningElement {
     contacts;
     opportunity;
     opportunities;
-    contactIdToPhoneMap = {};
+    contactIdToPhoneMap = new Map();
     
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
 
@@ -47,27 +47,23 @@ export default class ConnectAccount extends LightningElement {
     }
 
     handleClick() {
-        console.log("Button Clicked!");
         console.log("recordId: "+recordId);
         console.log("jaha");
        }
     handleCheckboxClick(event) {
         let triggeringContactId = event.target.dataset.contactid;
-        let triggeringContactPhone = event.target.dataset.contactPhone;
-        console.log('Checked? '+event.target.checked);
+        let triggeringContactPhone = event.target.dataset.contactphone;
         switch (event.target.checked) {
-            case FALSE: {
-                this.contactIdToPhoneMap.set(triggeringContactId, '');
+            case false: {
+                console.log('Reseting map');
+                if (this.contactIdToPhoneMap.get(triggeringContactId)) this.contactIdToPhoneMap.delete(triggeringContactId);
             }
-            case TRUE: {
-                this.contactIdToPhoneMap.delete(triggeringContactId);
+            case true: {
+                console.log('Building map');
+                this.contactIdToPhoneMap.set(triggeringContactId, triggeringContactPhone);
             }
         }
-        console.log(event.target.dataset.contactid);
-        console.log(event.target.dataset.contactphone);
-        console.log(this.contactIdToPhoneMap(triggeringContactId, triggeringContactPhone));
-        
-        
+        console.log('map1: '+this.contactIdToPhoneMap.get(triggeringContactId));
        }
 
     handleLoad() {
@@ -89,9 +85,24 @@ export default class ConnectAccount extends LightningElement {
         console.log(JSON.stringify(this.lineItemData));
     }
     saveFunction() {
-        saveFunction({contactList: this.contacts})
+        this.contactIdToPhoneMap.forEach((value, key) => {
+            console.log('Checking values: '+value);
+        })
+        let toApexObject = this.translateMapToObject(this.contactIdToPhoneMap);
+        let toApexObjectStringified = JSON.stringify(toApexObject);
+        console.log('Stringified: '+toApexObjectStringified);
+        saveFunction({StringifiedContactIdToPhoneObject: toApexObjectStringified})
             .then((result) => {
                 console.log('Saved: '+result);
             })
+    }
+    translateMapToObject(map){
+         console.log('Translating map!');
+         let obj = Array.from(map).reduce((obj, [key, value]) => {
+            obj[key] = value;
+            return obj;
+          }, {});
+          console.log('Objektet: '+obj);
+        return obj;
     }
 }

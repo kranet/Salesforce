@@ -120,4 +120,12 @@ public with sharing class Util {
             this.soqlDirector = 'SET OF IDS';
         }
     }
+    public static Set<Id> convertSet(Set<String> inputSet) {
+        Set<Id> idSet = (Set<Id>)JSON.deserialize(JSON.serialize(inputSet), Set<Id>.class);
+        return idSet;
+    }
+    public static Set<String> convertSet(Set<Id> inputSet) {
+        Set<String> stringSet = (Set<String>)JSON.deserialize(JSON.serialize(inputSet), Set<String>.class);
+        return stringSet;
+    }
 }

@@ -11,20 +11,21 @@ public with sharing class ContactController {
         ];
     }
     @AuraEnabled
-    public static String saveFunction(List<Contact> contactList) {
-        update contactList;
-        String acrv = 'SUCCESS';
-        return acrv;
-    }
-    @AuraEnabled
-    public static String saveFunction(Map<String, String> contactIdToPhoneMap) {    
-        Set<Id> contactIdsToUpdateSet = contactIdToPhoneMap.keySet();
-        Util.Parameters('Contact', contactIdsToUpdateSet);
-        Set<Id> contactsToUpdate = new Map<Id,SObject>([SELECT ID FROM Contact]).keySet();
-        for (String looper : contactIdToPhoneMap.keySet()){
-            contactIdSet.add((Id) looper);
+    public static String saveFunction(String StringifiedContactIdToPhoneObject) {
+        try {
+            Map<String, String> contactIdToPhoneMap = (Map<String, String>) JSON.deserialize(StringifiedContactIdToPhoneObject, Map<String, String>.class);
+            Set<Id> contactIdsToUpdateSet = Util.convertSet(contactIdToPhoneMap.keySet());
+            List<Contact> contactsToUpdate = GenericSObjectSelector.newInstance(Contact.sObjectType).selectByIds(contactIdsToUpdateSet);
+            for (Contact c : contactsToUpdate){
+                c.Phone = '';
+            }
+            update contactsToUpdate;
+            String acrv = 'SUCCESS';
+            return acrv;
         }
-        String acrv = 'SUCCESS';
-        return acrv;
+        catch (Exception e) {
+            System.debug('Saving failed with error: ' +e.getMessage());
+            return 'ERROR';
+        }
     }
 }
