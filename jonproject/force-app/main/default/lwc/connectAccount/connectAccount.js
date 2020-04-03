@@ -47,7 +47,7 @@ export default class ConnectAccount extends LightningElement {
     }
 
     handleClick() {
-        console.log("recordId: "+recordId);
+        console.log("recordId: "+this.recordId);
         console.log("jaha");
        }
     handleCheckboxClick(event) {

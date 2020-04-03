@@ -17,6 +17,9 @@
             ],
             "c/LwcFromVFWithSelectedAccounts": [
                 "LwcFromVFWithSelectedAccounts/LwcFromVFWithSelectedAccounts.js"
+            ],
+            "c/lwcQuickAction": [
+                "lwcQuickAction/lwcQuickAction.js"
             ]
         }
     },
