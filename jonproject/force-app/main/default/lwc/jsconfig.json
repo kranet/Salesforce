@@ -11,6 +11,12 @@
             ],
             "c/ldsUtils": [
                 "ldsUtils/ldsUtils.js"
+            ],
+            "c/lwcFromVFWithSelectedAccounts": [
+                "lwcFromVFWithSelectedAccounts/lwcFromVFWithSelectedAccounts.js"
+            ],
+            "c/LwcFromVFWithSelectedAccounts": [
+                "LwcFromVFWithSelectedAccounts/LwcFromVFWithSelectedAccounts.js"
             ]
         }
     },
