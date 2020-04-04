@@ -7,7 +7,7 @@ export default class LwcQuickAction extends LightningElement {
     context = createMessageContext();
 
 
-    connectedCallback() {
+    renderedCallback() {
         this.messageBack();
     }
     messageBack(){

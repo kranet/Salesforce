@@ -1,8 +1,10 @@
 <aura:component implements="force:hasRecordId, force:lightningQuickActionWithoutHeader">
-    <aura:attribute name="Loading" type="Boolean"/>
+    <aura:attribute name="Loading" type="Boolean" default="true"/>
     <lightning:messageChannel type="messageChannelShowcase__c" scope="APPLICATION" aura:id="messageChannel" onMessage="{!c.handleReceieveMessage}"/>
-    <aura:if isTrue="(v.Loading}">
+    <div class="slds-align_absolute-center" style="height:5rem">
+    <aura:if isTrue="{!v.Loading}">
         <lightning:dynamicIcon type="eq" option="play" alternativeText="Recording in progress"/>
     </aura:if>
+    </div>
     <c:lwcQuickAction recordId="{!v.recordId}"/>
 </aura:component>
