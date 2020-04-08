@@ -17,6 +17,12 @@
             ],
             "c/lwcQuickAction": [
                 "lwcQuickAction/lwcQuickAction.js"
+            ],
+            "c/lookup": [
+                "lookup/lookup.js"
+            ],
+            "c/sampleLookupContainer": [
+                "sampleLookupContainer/sampleLookupContainer.js"
             ]
         }
     },
