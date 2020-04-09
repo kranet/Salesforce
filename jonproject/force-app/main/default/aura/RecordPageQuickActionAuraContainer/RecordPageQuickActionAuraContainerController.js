@@ -1,8 +1,13 @@
 ({
+    doInit: function(component, event, helper) {
+        helper.initializeEventListener();
+      },
     handleReceiveMessage : function(component, event, helper) {
         if (event != null) {
             const loadingState = event.getParam('loading');
-            component.set("v.Loading", loadingState);
+            if(loadingState !== undefined){
+                component.set("v.Loading", loadingState);
+            }
         }
     }
 })

@@ -1,167 +1,40 @@
 <template>
-    <p>hej</p>
-    <div class="slds-grid slds-gutters" style="height:640">
-        <div class="slds-modal__container">
+    <section role="dialog" class="slds-fade-in-open">
+        <div>
         <header class="slds-modal__header">
-        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
-        
-        <span class="slds-assistive-text">Close</span>
-        </button>
         <h2 id="id-of-modalheader-h2" class="slds-text-heading_medium">Add Products</h2>
         <p class="slds-m-top_x-small">Pricebook: Salesforce Products</p>
         </header>
-        <div class="slds-modal__content slds-grid slds-nowrap" id="modal-content-id-1">
-        <div class="slds-col slds-grid slds-grid_vertical slds-nowrap">
-        <div class="slds-p-vertical_x-small slds-p-horizontal_large slds-shrink-none slds-theme_shade">
-        <div class="slds-form-element">
         <c-sample-lookup-container></c-sample-lookup-container>
-        <label class="slds-form-element__label slds-assistive-text" for="combobox-unique-id-20">Search</label>
-            <div class="slds-form-element__control">
-                <div class="slds-combobox_container">
-                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
-                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-                            <input type="text" class="slds-input slds-combobox__input" id="combobox-unique-id-20" aria-autocomplete="list" autocomplete="off" role="textbox" placeholder="Search Salesforce" />
-                            <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
-                            
+        <div class="slds-docked-form-footer"> 
+            <button class="slds-button slds-button_neutral">Cancel</button>
+            <button class="slds-button slds-button_brand">Submit</button>
+            <template if:false={allowProceed}>
+                <section aria-describedby="dialog-body-id-5" aria-labelledby="dialog-heading-id-2" class="slds-popover slds-popover_error slds-nubbin_bottom-left" role="dialog" style="position:absolute;bottom:56px;left:50%;margin-left:62px;transform:translateX(-50%)">
+                    <button class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close slds-button_icon-inverse" title="Close dialog">
+                    <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close dialog</span>
+                    </button>
+                    <header class="slds-popover__header">
+                        <div class="slds-media slds-media_center slds-has-flexi-truncate ">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container slds-icon-utility-error">
+                            <lightning-icon icon-name="utility:error" size="medium"></lightning-icon>
                             </span>
                         </div>
-                        <div id="listbox-unique-id" role="listbox" class="slds-dropdown slds-dropdown_fluid">
-                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
-                            <li role="presentation" class="slds-listbox__item">
-                            <div id="listbox-option-unique-id-01" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
-                                <span class="slds-media__figure">
-                                <span class="slds-icon_container slds-icon-standard-account">
-                                
-                                </span>
-                                </span>
-                                <span class="slds-media__body">
-                                <span class="slds-listbox__option-text slds-listbox__option-text_entity">Acme</span>
-                                <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">Account • San Francisco</span>
-                                </span>
-                            </div>
-                            </li>
-                            <li role="presentation" class="slds-listbox__item">
-                                <div id="listbox-option-unique-id-02" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
-                                    <span class="slds-media__figure">
-                                    <span class="slds-icon_container slds-icon-standard-account">
-                                    </span>
-                                    </span>
-                                    <span class="slds-media__body">
-                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">Salesforce.com, Inc.</span>
-                                    <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">Account • San Francisco</span>
-                                    </span>
-                                </div>
-                            </li>
-                            </ul>
+                        <div class="slds-media__body">
+                            <h2 class="slds-truncate slds-text-heading_medium" id="dialog-heading-id-2" title="Resolve error">Resolve error</h2>
                         </div>
+                        </div>
+                    </header>
+                    <div class="slds-popover__body" id="dialog-body-id-5">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+                        <a href="javascript:void(0);" title="Learn More">Learn More</a>
+                        </p>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="slds-text-title slds-m-top_x-small" aria-live="polite">0 Item(s) Selected</div>
-        </div>
-        <div class="slds-scrollable slds-grow">
-        <div class="slds-scrollable_none">
-        <table aria-multiselectable="true" class="slds-table slds-no-row-hover slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
-        <thead>
-        <tr class="slds-line-height_reset">
-        <th class="" scope="col" style="width:3.75rem"></th>
-        <th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
-        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
-        <span class="slds-assistive-text">Sort by: </span>
-        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-        <span class="slds-truncate" title="Name">Name</span>
-        <span class="slds-icon_container slds-icon-utility-arrowdown">
-        
-        </span>
-        </div>
-        </a>
-        <div class="slds-resizable">
-        <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-65" max="1000" min="20" tabindex="-1" />
-        <span class="slds-resizable__handle">
-        <span class="slds-resizable__divider"></span>
-        </span>
-        </div>
-        </th>
-        <th aria-label="Product Code" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
-        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
-        <span class="slds-assistive-text">Sort by: </span>
-        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-        <span class="slds-truncate" title="Product Code">Product Code</span>
-        <span class="slds-icon_container slds-icon-utility-arrowdown">
-        
-        </span>
-        </div>
-        </a>
-        <div class="slds-resizable">
-        <input type="range" aria-label="Product Code column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-66" max="1000" min="20" tabindex="-1" />
-        <span class="slds-resizable__handle">
-        <span class="slds-resizable__divider"></span>
-        </span>
-        </div>
-        </th>
-        <th aria-label="List Price" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
-        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
-        <span class="slds-assistive-text">Sort by: </span>
-        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-        <span class="slds-truncate" title="List Price">List Price</span>
-        <span class="slds-icon_container slds-icon-utility-arrowdown">
-        
-        </span>
-        </div>
-        </a>
-        <div class="slds-resizable">
-        <input type="range" aria-label="List Price column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-67" max="1000" min="20" tabindex="-1" />
-        <span class="slds-resizable__handle">
-        <span class="slds-resizable__divider"></span>
-        </span>
-        </div>
-        </th>
-        <th aria-label="Product Family" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
-        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
-        <span class="slds-assistive-text">Sort by: </span>
-        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-        <span class="slds-truncate" title="Product Family">Product Family</span>
-        <span class="slds-icon_container slds-icon-utility-arrowdown">
-        
-        </span>
-        </div>
-        </a>
-        <div class="slds-resizable">
-        <input type="range" aria-label="Product Family column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-68" max="1000" min="20" tabindex="-1" />
-        <span class="slds-resizable__handle">
-        <span class="slds-resizable__divider"></span>
-        </span>
-        </div>
-        </th>
-        </tr>
-        </thead>
-        <tbody>
-            <template if:true={contacts}>
-                <tr aria-selected="false" class="slds-hint-parent">
-                <td class="slds-text-align_right" role="gridcell" tabindex="0">
-                <label class="slds-checkbox-button" for="example-unique-id-132">
-                <input type="checkbox" class="slds-assistive-text" id="example-unique-id-132" value="example-unique-id-132" tabindex="-1" />
-                <span class="slds-icon_container slds-icon-utility-add slds-current-color" title="Description of icon when needed">
-                
-                <span class="slds-assistive-text">Add product</span>
-                </span>
-                </label>
-                
-                </td>
-                </tr>
-            </template>
-
-        </tbody>
-        </table>
+                    </section>
+                </template>
         </div>
         </div>
-        </div>
-        </div>
-        <footer class="slds-modal__footer">
-        <button class="slds-button slds-button_neutral">Cancel</button>
-        <button class="slds-button slds-button_brand">Next</button>
-        </footer>
-        </div>
-    </div>
+    </section>
 </template>

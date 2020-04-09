@@ -1,35 +1,55 @@
-import { LightningElement, api} from 'lwc';
+import { LightningElement, api, wire} from 'lwc';
 import getContactList from '@salesforce/apex/ContactController.getContactList';
-import { publish, createMessageContext,releaseMessageContext, subscribe, unsubscribe } from 'lightning/messageService';
+import { publish, subscribe, unsubscribe, APPLICATION_SCOPE, MessageContext } from 'lightning/messageService';
 import messageChannelShowcase from '@salesforce/messageChannel/messageChannelShowcase__c';
 
 export default class LwcQuickAction extends LightningElement {
     @api recordId;
+    @wire(MessageContext)
+    messageContext;
     contacts;
+    subscription = null;
 
-    context = createMessageContext();
+    allowProceed = true;
+    
     //First method run
     connectedCallback() {
         this.getContactList();
-
     }
     //Second method run
     renderedCallback() {
         this.messageBack();
+        this.setSubscribtion();
     }
+
+
     //Structured helper methods
     messageBack(){
         const message = {
             loading: false
         };
-        publish(this.context, messageChannelShowcase, message);
+        publish(this.messageContext, messageChannelShowcase, message);
     }
+    handleMessage(message){
+        this.receivedMessage = message ? JSON.stringify(message, null, '\t') : 'no message payload';
+        if(message.error !== undefined && message.error !== null){
+            this.allowProceed = message.error;
+        }
+    }
+    setSubscribtion(){
+        if (this.subscription) {
+            return;
+        }
+        this.subscription = subscribe(this.messageContext, messageChannelShowcase, (message) => {
+            this.handleMessage(message);
+        }, {scope: APPLICATION_SCOPE});
+    }
+    
     getContactList() {
         getContactList()
             .then(result => {
                 this.contacts = result;
                 this.error = undefined;
-                console.log('Result: '+contacts);
             })
             .catch(error => {
                 this.error = error;

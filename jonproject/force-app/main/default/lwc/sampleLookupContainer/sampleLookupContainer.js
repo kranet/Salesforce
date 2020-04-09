@@ -1,5 +1,8 @@
 import { LightningElement, api } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { publish, createMessageContext,releaseMessageContext, subscribe, unsubscribe } from 'lightning/messageService';
+import messageChannelShowcase from '@salesforce/messageChannel/messageChannelShowcase__c';
+
 
 /** SampleLookupController.search() Apex method */
 import apexSearch from '@salesforce/apex/SampleLookupController.search';
@@ -19,11 +22,17 @@ export default class SampleLookupContainer extends LightningElement {
         }
     ];
     errors = [];
+    context = createMessageContext();
 
     handleLookupTypeChange(event) {
         this.initialSelection = [];
         this.errors = [];
         this.isMultiEntry = event.target.checked;
+        const error = !this.isMultiEntry ? true : false;
+        const message = {
+            error: error
+        };
+        publish(this.context, messageChannelShowcase, message);
     }
 
     handleSearch(event) {

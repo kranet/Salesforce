@@ -2,11 +2,11 @@
     <aura:attribute name="Loading" type="Boolean" default="true"/>
     <lightning:messageChannel type="messageChannelShowcase__c" scope="APPLICATION" aura:id="messageChannel" onMessage="{!c.handleReceiveMessage}"/>
 
+    <c:lwcQuickAction recordId="{!v.recordId}"/>
     <aura:if isTrue="{!v.Loading}">
         <div class="slds-align_absolute-center" style="height:5rem">
             <lightning:dynamicIcon type="eq" option="play" alternativeText="Recording in progress"/>
         </div>
     </aura:if>
-    <c:lwcQuickAction recordId="{!v.recordId}"/>
 <div class="slds-modal__container"></div>
 </aura:component>
