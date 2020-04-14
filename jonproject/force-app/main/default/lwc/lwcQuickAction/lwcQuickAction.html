@@ -7,7 +7,7 @@
         </header>
         <c-sample-lookup-container></c-sample-lookup-container>
         <div class="slds-docked-form-footer"> 
-            <button class="slds-button slds-button_neutral">Cancel</button>
+            <button class="slds-button slds-button_neutral" onclick={handleCancelClick}>Cancel</button>
             <button class="slds-button slds-button_brand">Submit</button>
             <template if:false={allowProceed}>
                 <section aria-describedby="dialog-body-id-5" aria-labelledby="dialog-heading-id-2" class="slds-popover slds-popover_error slds-nubbin_bottom-left" role="dialog" style="position:absolute;bottom:56px;left:50%;margin-left:62px;transform:translateX(-50%)">

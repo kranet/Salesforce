@@ -56,4 +56,15 @@ export default class LwcQuickAction extends LightningElement {
                 this.contacts = undefined;
             });
     }
+    handleCancelClick(event){
+        console.log('LWC CANCEL STATE');
+            if(confirm('Discard your changes?')) {
+                const unloadauraevent = new CustomEvent("unloadauraevent", {
+                    detail: 1
+                  });
+                this.dispatchEvent(unloadauraevent);
+            } else {
+              event.preventDefault();
+            }
+    }
 }
