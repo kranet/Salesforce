@@ -57,11 +57,9 @@ export default class LwcQuickAction extends LightningElement {
             });
     }
     handleCancelClick(event){
-        console.log('LWC CANCEL STATE');
+        //Spring 2020 was supposed to implement overlaylibrary (as in aura) to improve and replace the gui of this confirm dialog.
             if(confirm('Discard your changes?')) {
-                const unloadauraevent = new CustomEvent("unloadauraevent", {
-                    detail: 1
-                  });
+                const unloadauraevent = new CustomEvent("unloadauraevent");
                 this.dispatchEvent(unloadauraevent);
             } else {
               event.preventDefault();

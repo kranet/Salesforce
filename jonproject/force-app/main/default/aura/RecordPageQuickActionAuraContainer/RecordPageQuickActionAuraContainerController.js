@@ -11,7 +11,7 @@
         }
     },
     unloadHandler: function(event) {
-        console.log('Catches event sent from downstream LWC and closes the super aura component');
+        //Catches event sent from downstream LWC and closes this aura component
         $A.get("e.force:closeQuickAction").fire();
     }
 })
