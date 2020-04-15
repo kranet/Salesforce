@@ -1,0 +1,21 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome, force:lightningQuickActionWithoutHeader">
+	<aura:attribute name="accountRecord" type="Object"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    
+    <force:recordData aura:id="recordLoader"
+    recordId="{!v.recordId}"
+    fields="Name,Description,Phone,Industry"
+    targetFields="{!v.accountRecord}"
+    targetError="{!v.recordLoadError}"
+    />
+    
+    <div> 
+        <lightning:card iconName="standard:account" title="{!v.accountRecord.Name}" >
+            <div class="slds-p-horizontal--small">
+                <p class="slds-text-heading--medium"><lightning:formattedPhone title="Phone" />Account Phone: {!v.accountRecord.Phone}</p>
+                <p class="slds-truncate"><lightning:formattedText title="Description"/>Account description: {!v.accountRecord.Description}</p>
+                <p class="slds-truncate"> <lightning:formattedText title="Industry"/>Account Industry: "{!v.accountRecord.Industry}"</p>
+            </div>
+        </lightning:card>
+    </div>
+</aura:component>

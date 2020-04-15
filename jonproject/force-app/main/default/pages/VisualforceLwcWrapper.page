@@ -1,6 +1,6 @@
 <apex:page standardController="Account" extensions="VFPageControllerExtension" recordSetVar="Accounts">
     <apex:includeLightning />
-    <div id="lightning" style="height:300px; width:50%;"/>
+    <div id="lightning" style="height:800; width:50%;"/>
     <apex:includeScript value="/soap/ajax/43.0/connection.js"/>
 	<apex:includeScript value="/soap/ajax/30.0/apex.js"/>
     <apex:includeScript value="/support/console/45.0/integration.js"/>

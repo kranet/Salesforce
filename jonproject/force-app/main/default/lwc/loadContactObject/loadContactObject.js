@@ -6,7 +6,7 @@ import saveFunction from '@salesforce/apex/ContactController.saveFunction';
 
 const FIELDS = ['Opportunity.Name', 'Opportunity.StageName'];
 
-export default class ConnectAccount extends LightningElement {
+export default class LoadContactObject extends LightningElement {
     @api recordId;
     @api record;
 
@@ -77,12 +77,6 @@ export default class ConnectAccount extends LightningElement {
                 this.error = error;
                 this.contacts = undefined;
             });
-    }
-    headerCheckoxChanged(event) {
-        this.lineItemData.forEach(element =>{
-            element.includedInAutomatedSupplies = event.target.checked;
-        });
-        console.log(JSON.stringify(this.lineItemData));
     }
     saveFunction() {
         this.contactIdToPhoneMap.forEach((value, key) => {

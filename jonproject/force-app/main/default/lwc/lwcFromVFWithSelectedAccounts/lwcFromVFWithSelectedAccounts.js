@@ -3,7 +3,7 @@ import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 
 const FIELDS = ['Opportunity.Name', 'Opportunity.StageName'];
 
-export default class ConnectAccount extends LightningElement {
+export default class LwcFromVFWithSelectedAccounts extends LightningElement {
     @api objectListStringified;
     
     accountList = [];
@@ -11,6 +11,6 @@ export default class ConnectAccount extends LightningElement {
         JSON.parse(this.objectListStringified).forEach(object =>{
             this.accountList.push(object);
         });
-        console.log(this.accountList.size);
+        console.log(this.accountList.length);
     }
 }

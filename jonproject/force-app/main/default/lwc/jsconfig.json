@@ -3,9 +3,6 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/connectAccount": [
-                "connectAccount/connectAccount.js"
-            ],
             "c/errorPanel": [
                 "errorPanel/errorPanel.js"
             ],
@@ -23,6 +20,15 @@
             ],
             "c/sampleLookupContainer": [
                 "sampleLookupContainer/sampleLookupContainer.js"
+            ],
+            "c/googleSearchSample": [
+                "googleSearchSample/googleSearchSample.js"
+            ],
+            "c/loadContactObject": [
+                "loadContactObject/loadContactObject.js"
+            ],
+            "c/LwcFromVFWithSelectedAccounts": [
+                "LwcFromVFWithSelectedAccounts/LwcFromVFWithSelectedAccounts.js"
             ]
         }
     },
