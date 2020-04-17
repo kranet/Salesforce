@@ -4,12 +4,12 @@ public with sharing class googleApi {
     }
     @AuraEnabled
     public static String callOut(){
-        HttpRequest req = new HttpRequest();
+       /*  HttpRequest req = new HttpRequest();
         req.setMethod('GET');
-        req.setEndpoint('callout:google_api_key'+'{!$Credential.Password}'+'&cx=017576662512468239146:omuauf_lfve&q=lectures');
+        req.setEndpoint('callout:google_api_key');
+        req.setHeader('APIKEY', '{!$Credential.Password}');
         HttpResponse res = new Http().send(req);
-        System.debug('RESPONSEN: '+res.getBody());
-        String resString = (String) res.getBody();
-        return resString;
+        return JSON.stringify(res); */
+        return '';
     }
 }

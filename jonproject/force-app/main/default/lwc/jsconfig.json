@@ -6,8 +6,17 @@
             "c/errorPanel": [
                 "errorPanel/errorPanel.js"
             ],
+            "c/googleSearchSample": [
+                "googleSearchSample/googleSearchSample.js"
+            ],
             "c/ldsUtils": [
                 "ldsUtils/ldsUtils.js"
+            ],
+            "c/loadContactObject": [
+                "loadContactObject/loadContactObject.js"
+            ],
+            "c/lookup": [
+                "lookup/lookup.js"
             ],
             "c/lwcFromVFWithSelectedAccounts": [
                 "lwcFromVFWithSelectedAccounts/lwcFromVFWithSelectedAccounts.js"
@@ -15,20 +24,8 @@
             "c/lwcQuickAction": [
                 "lwcQuickAction/lwcQuickAction.js"
             ],
-            "c/lookup": [
-                "lookup/lookup.js"
-            ],
             "c/sampleLookupContainer": [
                 "sampleLookupContainer/sampleLookupContainer.js"
-            ],
-            "c/googleSearchSample": [
-                "googleSearchSample/googleSearchSample.js"
-            ],
-            "c/loadContactObject": [
-                "loadContactObject/loadContactObject.js"
-            ],
-            "c/LwcFromVFWithSelectedAccounts": [
-                "LwcFromVFWithSelectedAccounts/LwcFromVFWithSelectedAccounts.js"
             ]
         }
     },
