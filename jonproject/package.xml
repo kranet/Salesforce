@@ -25,13 +25,12 @@
 		<members>AttributeInstantiation1</members>
 		<members>AttributeInstantiation2LWC</members>
 		<members>AuraApp</members>
-		<members>LWCwrap</members>
+		<members>RecorddataShowcase</members>
+		<members>RecordPageQuickActionAuraContainer</members>
+		<members>VFtoLWCAuraIntermediary</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
-	<types>
-		<members>Account.Opportunity__c</members>
-		<name>CustomField</name>
-	</types>
+	
 	<types>
 		<members>google_api_key__c</members>
 		<name>CustomObject</name>
