@@ -2,6 +2,7 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
 		<members>ContactController</members>
+		<members>SampleLookupController</members>
 		<members>GenericSObjectSelector</members>
 		<members>GenericSObjectSelectorMock</members>
 		<members>GenericSObjectSelectorTest</members>
@@ -30,10 +31,14 @@
 		<members>VFtoLWCAuraIntermediary</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
-	
 	<types>
 		<members>google_api_key__c</members>
+		<members>Account</members>
 		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>Account.Opportunity__c</members>
+		<name>CustomField</name>
 	</types>
 	<types>
 		<members>*</members>
