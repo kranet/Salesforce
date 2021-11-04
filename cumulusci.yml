@@ -1,0 +1,24 @@
+minimum_cumulusci_version: '3.47.0'
+project:
+    name: jonproject
+    package:
+        name: testpackagename
+        api_version: '52'
+    git:
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/jonproject/tests
+            options:
+                outputdir: robot/jonproject/results
+
+    robot_testdoc:
+        options:
+            path: robot/jonproject/tests
+            output: robot/jonproject/doc/jonproject_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
