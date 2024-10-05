@@ -13,4 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:      
       - name: 'Checkout source code'
-      - run: echo 'lol'
+        uses: actions/checkout@v4
+
+      - name: 'kor bara'
+        run: echo 'lol'
