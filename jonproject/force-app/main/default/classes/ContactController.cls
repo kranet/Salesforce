@@ -18,6 +18,7 @@ public with sharing class ContactController {
             List<Contact> contactsToUpdate = GenericSObjectSelector.newInstance(Contact.sObjectType).selectByIds(contactIdsToUpdateSet);
             for (Contact c : contactsToUpdate){
                 c.Phone = '';
+                throw new Exception("hej");
             }
             update contactsToUpdate;
             String acrv = 'SUCCESS';
