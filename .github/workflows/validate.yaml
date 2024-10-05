@@ -5,15 +5,3 @@ on:
     branches:
       - master
     types: [opened, synchronize]
-    paths:
-      - 'force-app/**'
-
-jobs:
-  validate-deployment:
-    runs-on: ubuntu-latest
-    container:
-      image: salesforce/cli:latest-slim
-    steps:      
-      - name: 'Authenticate using SFDX_AUTH_URL'
-        run: | 
-          echo git log
