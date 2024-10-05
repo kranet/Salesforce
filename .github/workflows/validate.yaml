@@ -11,8 +11,6 @@ on:
 jobs:
   validate-deployment:
     runs-on: ubuntu-latest
-    container:
-      image: salesforce/cli:latest-slim
     steps:      
       - name: 'Checkout source code'
         uses: actions/checkout@v4
