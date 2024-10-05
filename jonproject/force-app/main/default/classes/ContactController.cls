@@ -13,6 +13,7 @@ public with sharing class ContactController {
     @AuraEnabled
     public static String saveFunction(String StringifiedContactIdToPhoneObject) {
         try {
+            //hej 2
             Map<String, String> contactIdToPhoneMap = (Map<String, String>) JSON.deserialize(StringifiedContactIdToPhoneObject, Map<String, String>.class);
             Set<Id> contactIdsToUpdateSet = Util.convertSet(contactIdToPhoneMap.keySet());
             List<Contact> contactsToUpdate = GenericSObjectSelector.newInstance(Contact.sObjectType).selectByIds(contactIdsToUpdateSet);
