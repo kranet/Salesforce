@@ -13,11 +13,13 @@ public with sharing class ContactController {
     @AuraEnabled
     public static String saveFunction(String StringifiedContactIdToPhoneObject) {
         try {
+            //Hej15
             Map<String, String> contactIdToPhoneMap = (Map<String, String>) JSON.deserialize(StringifiedContactIdToPhoneObject, Map<String, String>.class);
             Set<Id> contactIdsToUpdateSet = Util.convertSet(contactIdToPhoneMap.keySet());
             List<Contact> contactsToUpdate = GenericSObjectSelector.newInstance(Contact.sObjectType).selectByIds(contactIdsToUpdateSet);
             for (Contact c : contactsToUpdate){
                 c.Phone = '';
+                throw new Exception("wtf");
             }
             update contactsToUpdate;
             String acrv = 'SUCCESS';
