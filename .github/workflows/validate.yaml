@@ -12,5 +12,5 @@ jobs:
   validate-deployment:
     runs-on: ubuntu-latest
     steps:      
-      - name: 'kor bara'
-        run: echo 'lol'
+      - name: 'korbara'
+        run: echo "lol"
