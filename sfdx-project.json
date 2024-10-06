@@ -1,7 +1,7 @@
 {
     "packageDirectories": [
       {
-        "path": "force-app",
+        "path": "jonproject/force-app",
         "default": true
       }
     ],
