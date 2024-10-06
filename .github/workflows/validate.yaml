@@ -3,11 +3,8 @@ name: Validate pull request
 on:
   pull_request:
     branches:
-      - main
       - master
     types: [opened, synchronize]
-    paths:
-      - 'force-app/**'
 
 jobs:
   validate-deployment:
